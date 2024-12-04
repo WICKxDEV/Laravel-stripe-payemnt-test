@@ -26,7 +26,7 @@ class StripePaymentController extends Controller
      */
     public function stripePost(Request $request): RedirectResponse
     {
-        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
       
         Stripe\Charge::create ([
                 "amount" => 10 * 100,
