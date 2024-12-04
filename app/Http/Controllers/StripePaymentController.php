@@ -32,7 +32,7 @@ class StripePaymentController extends Controller
                 "amount" => 10 * 100,
                 "currency" => "usd",
                 "source" => $request->stripeToken,
-                "description" => "Test payment from itsolutionstuff.com." 
+                "description" => "Test payment from WICKxDEV" 
         ]);
                 
         return back()
