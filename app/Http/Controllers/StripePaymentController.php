@@ -1,43 +1,41 @@
-<?php 
-
+<?php
+      
 namespace App\Http\Controllers;
-
-use illuminate\Http\Request;
+       
+use Illuminate\Http\Request;
 use Stripe;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Routing\Redirector;
-
+       
 class StripePaymentController extends Controller
 {
     /**
-     * success response method
-     * 
+     * success response method.
+     *
      * @return \Illuminate\Http\Response
      */
-    public function stripe(): View 
+    public function stripe(): View
     {
         return view('stripe');
     }
-
+      
     /**
      * success response method.
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function stripePost(Request $request): RedirectResponse
     {
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-
+      
         Stripe\Charge::create ([
-            "amount" => 10 * 100,
-            "currency" => "usd",
-            "source" => $request->stripeToken,
-            "amount" => 10 * 100,
-            "description" => "Test payment from WICKxDev"
+                "amount" => 10 * 100,
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "Test payment from itsolutionstuff.com." 
         ]);
-        
+                
         return back()
-            ->with('success', 'Payment Successful!');
+                ->with('success', 'Payment successful!');
     }
 }
